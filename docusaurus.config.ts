@@ -50,11 +50,11 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/main-logo-icon-only.png',
+    image: 'img/main-logo.png',
     navbar: {
-      title: 'ParcelTracer',
+      title: 'Parcel Tracer',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Parcel Tracer',
         src: 'img/main-logo-icon-only.png',
       },
       items: [
@@ -93,7 +93,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Parcel Tracer, Inc.`,
     },
     prism: {
       theme: prismThemes.github,
