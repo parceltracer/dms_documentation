@@ -36,7 +36,11 @@ The profit report allows you to extract a pdf document that summarises the profi
 To generate a profit report, specify the start and end date, then click **GENERATE REPORT**\
 As soon as the report is generated, you will see a download button which you can click to download and view the profit report.
 
-<ReactPlayer playing controls url='https://youtu.be/P_QJV4oDHYk' />
+<div className="player-wrapper">
+    <ReactPlayer className="react-player" width="100%"
+      height="100%"  playing controls={false} url='https://youtu.be/P_QJV4oDHYk' />
+</div>
+
 
 ## Delivery States
 
