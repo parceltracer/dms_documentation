@@ -1,4 +1,8 @@
 ---
+id: my-doc-id
+title: Create An Account
+description: Create An Account
+slug: /create-an-account
 sidebar_position: 1
 ---
 

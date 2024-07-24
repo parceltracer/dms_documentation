@@ -2,46 +2,47 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Introduction
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Let's discover parcel tracer in less than 5 minutes!
 
-## Getting Started
+## What is parcel tracer
 
-Get started by **creating a new site**.
+[Parcel Tracer](https://parceltracer.app/) is a cloud-based software that helps connect delivery companies, delivery drivers, merchants and end customers all on one platform.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+- It allows delivery companies and drivers to manage the delivery cycle, track orders and manage payments and invoices.
+- It allows merchants to place and track orders on the platform and view delivery invoices.
+- It allows end customers to stay informed about the state of delivery of their order.
 
-### What you'll need
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+## What you'll need
 
-## Generate a new site
+- A computer
+- Internet connection
+- Preferrably, a mobile device
 
-Generate a new Docusaurus site using the **classic template**.
+## What it looks like on your computer
 
-The classic template will automatically be added to your project after you run the command:
+If you are the admin of a delivery organisation, here is how parcel tracer's main dashboard will look like to you. 
 
-```bash
-npm init docusaurus@latest my-website classic
-```
+![alt text](desktop-view.png)
+It includes several widgets that give you a bird's eye view of the delivery state at your company including:
+- Number of orders in each delivery state
+- Number of orders in each payment state
+- History of delivered and cancelled orders
+- Distribution of orders based on region
+- Generating profit reports over specific duration
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+## What it looks like on your mobile phone
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+You can scan barcodes and lookup orders easily!
 
-## Start your site
+![alt text](mobile-view.png)
 
-Run the development server:
+## Next Steps
 
-```bash
-cd my-website
-npm run start
-```
+By now, you should have a general clear idea what Parcel Tracer is about.
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+Yet, there are tons of features to learn about.
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+We've get you backed by an amazing tutorial so you can unlock the power of our tool!
