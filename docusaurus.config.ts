@@ -11,12 +11,12 @@ const config: Config = {
   url: 'https://parceltracer.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/user-guide',
+  baseUrl: '/dms_documentation/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'parceltracer', // Usually your GitHub org/user name.
-  projectName: 'adel', // Usually your repo name.
+  projectName: 'dms_documentation', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -79,7 +79,7 @@ const config: Config = {
           items: [
             {
               label: 'Tutorial',
-              to: '/user-guide/docs/intro',
+              to: '/dms_documentation/docs/intro',
             },
           ],
         },
