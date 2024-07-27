@@ -40,7 +40,7 @@ You can download a sample report from [here](https://drive.google.com/uc?export=
 
 <div className="player-wrapper">
     <ReactPlayer className="react-player" width="100%"
-      height="100%"  playing controls={false} url='https://youtu.be/YIqGwT76558' />
+      height="100%" url='https://youtu.be/YIqGwT76558' />
 </div>
 
 This report includes 3 pages.

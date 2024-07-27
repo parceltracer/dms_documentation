@@ -31,7 +31,7 @@ The following video shows an example of how the form can be filled.
 
 <div className="player-wrapper">
     <ReactPlayer className="react-player" width="100%"
-      height="100%"  playing controls={false} url='https://youtu.be/CZNST1NUBgI' />
+      height="100%" url='https://youtu.be/CZNST1NUBgI' />
 </div>
 
 
