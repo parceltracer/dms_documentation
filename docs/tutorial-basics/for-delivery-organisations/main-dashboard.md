@@ -79,42 +79,13 @@ The last page considers only cancelled orders, and shows the same information as
 
 This section shows the number of orders in each delivery state.
 
-- **Pending**: not yet approved by the delivery company. 
-  - Orders created by merchants are created in the Pending state
-  - Orders created by the delivery company is created in the approved state. 
-  - A pending order can't be sent out for delivery, it should be first approved.
-- **Approved**: packaged an ready for delivery by the driver.
-- **In Transit**: on its way to the recepient.
-- **Delivered**: delivered to the recepient.
-- **Cancelled**: cancelled due to some reason (return, refund, lost, etc.)
+For a deeper explanation about the different delivery states, refer to [this](https://parceltracer.github.io//dms_documentation/docs/tutorial-basics/for-delivery-organisations/orders/intro-to-orders#delivery-states) section.
 
 ## Payment States
 
 This section shows the number of orders in each payment state.
 
-- **Uninvoiced**: no payments are done so far.
-- **Invoiced for driver**: the driver has paid the money to the delivery company.
-- **Invoiced for merchant**: the delivery company has paid the money to the merchant.
-
-:::danger Pay Attention
-It is not possible to have inconsistent states in the system.\
-For example, an order can't be `Pending` and `Invoiced For Driver` at the same time.\
-If you try to do such modification to the order, the system will refuse to save the order.
-:::
-
-
-The following table shows the accepted order states:
-
-| Delivery State | Payment State |
-|----------------|---------------|
-| Pending        | Uninvoiced    |
-| Approved       | Uninvoiced    |
-| In Transit     | Uninvoiced    |
-| Delivered      | Any State     |
-| Cancelled      | Any State     |
-
-
-
+For a deeper explanation about the different payment states, refer to [this](https://parceltracer.github.io//dms_documentation/docs/tutorial-basics/for-delivery-organisations/orders/intro-to-orders#payment-states) section.
 
 ## Delivered Orders History
 
