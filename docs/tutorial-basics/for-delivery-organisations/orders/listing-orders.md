@@ -128,3 +128,123 @@ You can get the tracking link of an order by clicking the copy-link button in th
 ![alt text](./media/copy-tracking-link.png)
 
 You can then share this tracking link with the customer or the merchant.
+
+## Bulk Actions
+
+The orders page allows you to select a group of orders and perform an action on them.
+
+The actions that can be performed are the following:
+- Modifying delivery state
+- Modifying payment state
+- Modifying the orders' branch
+- Assigning orders to a driver
+- Deleting orders
+- Printing orders in a pdf
+
+To apply an action to a group of orders, you have to do the following:
+- select the orders that you wish to apply the action on
+- click the **Action** button, which will open a window
+- select the action
+- set the action details and click **Apply**
+
+The following image shows how this should like:
+
+![alt text](./media/selecting-an-action.png)
+
+:::danger Pay Attention
+If you are an employee (i.e. not an admin account), you might not have access to all actions described in this section.
+
+The actions that you are allowed to do depend on the permissions with which the admin configured your account.
+:::
+
+### Set Delivery State
+
+This action allows you to change the delivery state of a group of orders with one click.
+
+All what you have to do is to choose the **Set Delivery State** action, and then select the new delivery state that you wish to apply to the selected orders.
+
+This is shown in the following figure:
+
+![alt text](./media/set-delivery-state.png)
+
+There are few things that you need to pay attention to when setting the delivery states of orders:
+- Applying this action will reset the payment state of the selected orders to **Uninvoiced**.
+- You can't change the delivery state to a value that makes the order state inconsistent. The following actions are not allowed:
+    - Setting delivery state to anything but **Pending** for an order that has not been assigned an order id yet. This can happen for orders that were created by merchants without any order id.
+    - Setting delivery state to **In Transit** or **Delivered** when the order is not assigned to a driver yet.
+
+### Set Payment State
+
+This action allows you to change the payment state of a group of orders with one click.
+
+All what you have to do is to choose the **Set Payment State** action, and then select the new payment state that you wish to apply to the selected orders.
+
+This is shown in the following figure:
+
+![alt text](./media/set-payment-state.png)
+
+:::danger Pay Attention
+
+The application doesn't allow you to set the payment state to **Invoiced For Driver** or **Invoiced For Merchant** if one of the selected orders is not yet in a final state (i.e. delivered or cancelled).
+:::
+
+:::danger Pay Attention
+
+Setting payment state as a bulk action will not create any invoices.
+
+If you wish to generate invoices for paid orders, you should use the **Accounting** page.
+
+This action should be used when you have to fix some errors in order states.
+
+For example, if you included some orders by mistake in a driver's invoice and you want to revert the payment state to uninvoiced, you can use this option.
+:::
+
+### Set Branch
+
+This action is similar to previous actions.
+
+It is useful to assign a group of orders to a specific branch.
+
+### Assign Driver
+
+This action allows you to assign a group of orders to a specific driver as you can see in the figure below.
+
+![alt text](./media/assign-driver.png)
+
+As you can see in the figure, you need to specify the following:
+- The driver: you can search for a driver by typing his name or phone number
+- The driver commission in L.L and in $
+
+:::danger Pay Attention
+
+You are not allowed to assign orders to a driver if:
+- one of the orders in not approved yet
+- one of the orders in already **Invoiced For Driver** or **Invoiced For Merchant**
+
+Once you assign orders to a driver, the delivery state of the orders will become **In Transit**.
+:::
+
+### Delete Order
+
+This action allows you to delete the selected orders.
+
+:::danger
+This action is not reversible.
+
+Deleted orders can't be restored.
+:::
+
+### Extract As PDF
+
+This action allows you to extract the selected orders data in a PDF file.
+
+The data are organised in a table.
+
+At the end of the document, you will have a small summary including:
+- Total Orders: this is the total number of orders that were printed
+- Price: this is the sum of prices of all printed orders.
+- Delivery Fee: this is the sum of all delivery fees of all printed orders.
+
+The figure below shows an example of what the extraction report can contain:
+
+![alt text](./media/extract-as-pdf.png)

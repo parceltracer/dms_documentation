@@ -67,7 +67,7 @@ The following table shows the accepted order states:
 
 | Delivery State | Payment State |
 |----------------|---------------|
-| Pending        | Uninvoiced    |
+| Pending Approval        | Uninvoiced    |
 | Approved       | Uninvoiced    |
 | In Transit     | Uninvoiced    |
 | Delivered      | Any State     |
