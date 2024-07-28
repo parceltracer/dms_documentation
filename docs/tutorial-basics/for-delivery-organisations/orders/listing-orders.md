@@ -59,4 +59,63 @@ The video below shows you how you can search by order id and by customer name.
       height="100%" url='https://youtu.be/eY7PJq-I_Yk' />
 </div>
 
+### Date Controls
+
+You can narrow down the orders list to a specific period by specifying a range for creation dates.]
+
+### Filtering Controls
+
+Filtering controls can help combine multiple filters in order to show orders that adhere to specific criteria.
+
+The possible criterion that you can combine are the following:
+- Driver: show orders that are attached to a specific driver
+- Merchant: show orders that are attached to a specific merchant
+- Region: show orders that are sent to a specific region and/or governorate
+- Delivery State: show orders with a specific delivery state
+- Payment State: show orders with a specific payment state
+
+Here is how you can apply these filters:
+- To filter by driver, type `driver:` and then start typing the driver name or phone number
+- To filter by merchant, type `merchant:` and then start typing the merchant name or phone number
+- To filter by region, type `district:` (or `governorate:`) and then start typing the district (or governorate) name
+- To filter by delivery state, type `delivery_state:` and then choose the delivery state from the dropdown list
+- To filter by payment state, type `payment_state:` and then choose the payment state from the dropdown list
+
+Once you start typing into the filters field, you will get some suggestions for filters that match your query.
+
+:::tip Hint
+When typing your filter value, you don't have to write the exact full name of the driver, merchant, region, etc. 
+
+You write part of the name and the dropdown will do its best to autocomplete your filter.
+
+For example, if you write `driver:sam`, the dropdown will show you filters for all drivers whose names contain `sam`.
+:::
+
+#### Filtering Example
+
+Suppose you are interested in listing the orders that are **Delivered** sent by merchant **Merch-X** to customers in **Baabda**.
+
+In this case, you should apply the following filters:
+
+`merchant:Merch-X`, `district:baabda`, `delivery_state:delivered`.
+
+The following video shows you how easy it is to apply these filters.
+
+<div className="player-wrapper">
+    <ReactPlayer className="react-player" width="100%"
+      height="100%" url='https://youtu.be/qafc5el-Ldg' />
+</div>
+
+<br/>
+:::tip Hint
+Search, date and filters controls can be combined together to form complex filtering and searching. 
+
+For example, you can look for orders that:
+- are sent by merchant X
+- are currently in transit
+- were created between date d1 and date d2
+- are with driver Y
+
+In short, whatever you put in the search, date and filters get combined by the app to produce the correct result that adheres to what you are looking for.
+:::
 
