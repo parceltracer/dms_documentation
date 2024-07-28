@@ -119,3 +119,12 @@ For example, you can look for orders that:
 In short, whatever you put in the search, date and filters get combined by the app to produce the correct result that adheres to what you are looking for.
 :::
 
+## Tracking Links
+
+Each order has a tracking link that is automatically assigned by the parcel tracer app.
+
+You can get the tracking link of an order by clicking the copy-link button in the orders table as shown in the figure below
+
+![alt text](./media/copy-tracking-link.png)
+
+You can then share this tracking link with the customer or the merchant.
