@@ -10,7 +10,12 @@ import ReactPlayer from 'react-player'
 
 It is possible to create a new order by filling the create order form.
 
-You also have the barcode scanning feature at your disposal to speed up filling the order id and/or reference number. 
+You also have the barcode scanning feature at your disposal to speed up filling the order id and/or reference number.
+
+:::tip Hint
+You can attach a barcode scanner device to your laptop and scan barcodes on the fly!\
+If you wish to obtain a laser barcode scanner, don't hesitate to contact us.
+:::
 
 
 ## Filling An Order Form

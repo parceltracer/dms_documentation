@@ -8,7 +8,7 @@ import ReactPlayer from 'react-player'
 
 ## Introduction
 
-The orders page provides you with a table listing all orders your orders.
+The orders page provides you with a table listing all your orders.
 
 This table is also supported with a search and filter sections so that you can narrow down the order list based on specific criteria.
 
