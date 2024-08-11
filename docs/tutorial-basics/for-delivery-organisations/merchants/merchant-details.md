@@ -5,7 +5,7 @@ description: Learn how to view and manage merchant details
 sidebar_position: 4
 ---
 
-## Order Details Page
+## Merchant Details Page
 
 Merchant details page shows you exhaustive information about a merchant.
 
@@ -13,7 +13,7 @@ This page is split into 2 views:
 - **Orders**: shows a table including orders assigned to the related merchant only.
 - **Account**: form that allows you to delete the merchant, or modify the his details, including modifying the password.
 
-## Orders View
+## Merchants View
 
 Here is an example of the orders view:
 

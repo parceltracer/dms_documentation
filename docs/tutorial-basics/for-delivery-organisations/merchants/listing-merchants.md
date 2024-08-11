@@ -7,7 +7,7 @@ sidebar_position: 3
 
 ## Introduction
 
-The merchants page provides you with a table listing all your merchants.
+The [merchants page](https://parceltracer.app/merchants) provides you with a table listing all your merchants.
 
 This table is also supported with a search section so that you can narrow down the merchant list based on specific criteria.
 

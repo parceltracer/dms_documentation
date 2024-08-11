@@ -218,8 +218,8 @@ As you can see in the figure, you need to specify the following:
 :::danger Pay Attention
 
 You are not allowed to assign orders to a driver if:
-- one of the orders in not approved yet
-- one of the orders in already **Invoiced For Driver** or **Invoiced For Merchant**
+- one of the orders is not approved yet
+- one of the orders is already **Invoiced For Driver** or **Invoiced For Merchant**
 
 Once you assign orders to a driver, the delivery state of the orders will become **In Transit**.
 :::
