@@ -1,12 +1,12 @@
 ---
 id: creating-branches
-title: Creating Branchs
+title: Creating Branches
 description: Learn how to create branches
 sidebar_position: 2
 ---
 import ReactPlayer from 'react-player'
 
-## Create Branch From Branchs Page
+## Create Branch From Branches Page
 
 Navigate to the [branches page](https://parceltracer.app/branches).
 

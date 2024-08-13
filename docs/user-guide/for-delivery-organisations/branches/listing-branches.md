@@ -1,6 +1,6 @@
 ---
 id: listing-branches
-title: Listing Branchs
+title: Listing Branches
 description: Learn how to list and search through branches
 sidebar_position: 3
 ---
