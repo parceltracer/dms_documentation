@@ -1,5 +1,5 @@
 ---
-id: intro-to-orders
+id: merchant-intro-to-orders
 title: Introduction
 description: Introduction to orders
 sidebar_position: 1
@@ -20,28 +20,20 @@ The table below describes the properties that describe an order in the system.
 |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | order id          | A unique ID that identifies the order.                                                                                                                                 |
 | reference number  | An id that can be relevant to the sender.  It is not unique.                                                                                                           |
-| Merchant          | The sender of the order.                                                                                                                                               |
 | Customer          | The recepient of the order.                                                                                                                                            |
-| Driver            | The delivery driver that delivers the order.                                                                                                                           |
-| Branch            | The delivery company that the order is attached to.                                                                                                                    |
+| Branch            | The delivery company branch that the order is attached to.                                                                                                             |
 | Address           | Complete destination address. Usually, it is the same as the customer's address.                                                                                       |
 | District          | Destination's district (e.g. Jezzine). Usually, it is the same as the customer's district.                                                                             |
 | Delivery State    | The delivery state of the order (PENDING \| APPROVED \| IN TRANSIT \| DELIVERED \| CANCELLED)                                                                          |
 | Payment State     | The payment state of the order (UNINOIVED \| INVOICED FOR DRIVER \| INVOICED FOR MERCHANT)                                                                             |
 | Price             | The amount of money that the merchant should get from the customer for this order.                                                                                     |
 | Delivery Fee      | The amount of money that the delivery company should get from the customer delivering this order.                                                                      |
-| Driver Commission | The amount of money that the delivery company should pay to the delivery driver for delivering this order.                                                             |
 | Description       | A description that is visible to delivery company employees, to the customer and to the merchant. Usually it contains a description of what is contained in the order. |
-| Public Note       | A note that is visible to the delivery company and to the merchant, but not to the customer.                                                                           |
-| Private Note      | A note that is visible to the delivery company only.                                                                                                                   |
 
 ## Delivery States
 
 There are 5 possible delivery states:
-- **Pending**: not yet approved by the delivery company. 
-  - Orders created by merchants are created in the Pending state
-  - Orders created by the delivery company is created in the approved state. 
-  - A pending order can't be sent out for delivery, it should be first approved.
+- **Pending**: not yet approved by the delivery company.
 - **Approved**: packaged and ready for delivery by the driver.
 - **In Transit**: on its way to the recepient.
 - **Delivered**: delivered to the recepient.
