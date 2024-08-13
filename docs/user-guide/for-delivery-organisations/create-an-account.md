@@ -25,7 +25,7 @@ An organisation can have only one admin account, but it can have several employe
 
 ### Creating an admin account
 
-For now, to open an account, please contact us by whatsapp so we can help you open and setup an account for free.
+For now, to open an account, please [contact us by whatsapp](https://wa.me/+33753560667) so we can help you open and setup an account for free.
 
 We are working on extending the current behaviour so that you can create an account for your organisation whenever you want without any need to reach out to us.
 
