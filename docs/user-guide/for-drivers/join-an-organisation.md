@@ -1,0 +1,44 @@
+---
+id: driver-join-an-org
+title: Joining a Delivery Organisation
+description: Joining a Delivery Organisation
+slug: /driver/join-an-org
+sidebar_position: 2
+---
+
+## Introduction
+
+When you login to your parceltracer account for the first time, you will probably not be attached yet to any delivery organisation.
+
+In this case, you will see a view similar to the following:
+
+![alt text](./media/driver-default-view.png)
+
+You can see the message saying that you are not attach to any delivery organisation yet.
+
+## Joining a Delivery Organisation
+
+To join a delivery organisation, ask the delivery organisation admin to add you to their organisation account in parcel tracer.
+
+All you need is to provide your phone number to the admin.
+
+You can help the admin by sharing [this link](https://parceltracer.github.io/dms_documentation/docs/user-guide/for-delivery-organisations/drivers/creating-drivers#adding-a-registered-driver) which explains how you can be added to the delivery organisation.
+
+Once your account is added to a delivery organisation, the warning message should disappear and you should see something similar to the following view:
+
+![alt text](./media/driver-view-after-joining-one-org.png)
+
+You can see now that you have joined the delivery organisation called **system**.
+
+:::tip Hint
+
+As a delivery driver, you can join more than one delivery organisation.
+
+If you join multiple delivery organisations, you will be able to select which organisation you want to navigate directly from the account.
+
+As an example, suppose that you joined another delivery organisation called **demo**, then you will see a drop down list to select the delivery org as you can see in the figure below:
+
+![alt text](./media/driver-multiple-orgs-dropdown.png)
+
+The app will show you orders and invoices related to the selected delivery organisation only.
+:::
