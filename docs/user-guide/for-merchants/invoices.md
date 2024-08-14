@@ -2,7 +2,7 @@
 id: driver-invoices
 title: Invoices
 description: Invoices
-slug: /driver/invoices
+slug: /merchant/invoices
 sidebar_position: 4
 ---
 
