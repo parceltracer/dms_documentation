@@ -37,4 +37,4 @@ Here is an example:
 
 ![alt text](./media/merchant-invoice.png)
 
-In the example above, you should have collected 17$ + 1000000 L.L, and should get paid 5$ + 20000 L.L of them as a delivery commission.
+In the example above, you should receive 12$ + 1000000 L.L, and the delivery company will have received 5$ for delivery.
