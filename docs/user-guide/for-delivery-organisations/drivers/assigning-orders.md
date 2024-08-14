@@ -15,7 +15,7 @@ The following 2 sections explain in details how this can be done.
 
 ## Using Orders Page
 
-Please refer to [this](https://parceltracer.github.io/dms_documentation/docs/tutorial-basics/for-delivery-organisations/orders/listing-orders#assign-driver) section for more details about how you can assign orders to a driver from the orders page.
+Please refer to [this](https://parceltracer.github.io/dms_documentation/docs/user-guide/for-delivery-organisations/orders/listing-orders#assign-driver) section for more details about how you can assign orders to a driver from the orders page.
 
 ## Using **Assign Orders** Page
 
