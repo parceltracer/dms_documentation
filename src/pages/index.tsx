@@ -70,7 +70,7 @@ export default function Home(): JSX.Element {
   return (
     <Layout
       title={`Docs`}
-      description="Description will go into a meta tag in <head />">
+      description="Learn about parcel tracer to master managing delivery cycles">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
