@@ -29,33 +29,23 @@ function HomepageHeader() {
 
 
         <Grid container spacing={2} justifyContent="center">
-          <Grid item xs={12} sm={6} md={4} className={styles.buttons}>
+          <Grid item xs={12} sm={6} md={6} className={styles.buttons}>
             <Link
               className="button button--secondary button--lg"
               to="/docs/user-guide/intro"
               style={{ width: '100%', textAlign: 'center' }} // Optional: Ensures full width and centered text
             >
-              Getting Started
+              Get Started
             </Link>
           </Grid>
 
-          <Grid item xs={12} sm={6} md={4} className={styles.buttons}>
-            <Link
-              className="button button--secondary button--lg"
-              to="/docs/resources-and-pricing/training-sessions"
-              style={{ width: '100%', textAlign: 'center' }} // Optional: Ensures full width and centered text
-            >
-              Training Sessions
-            </Link>
-          </Grid>
-
-          <Grid item xs={12} sm={12} md={4} className={styles.buttons}>
+          <Grid item xs={12} sm={6} md={6} className={styles.buttons}>
             <Link
               className="button button--secondary button--lg"
               to="/docs/resources-and-pricing/pricing"
               style={{ width: '100%', textAlign: 'center' }} // Optional: Ensures full width and centered text
             >
-              Pricing
+              Resources & Pricing
             </Link>
           </Grid>
         </Grid>
