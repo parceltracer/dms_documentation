@@ -56,9 +56,15 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          sidebarId: 'userguide',
           position: 'left',
           label: 'User Guide',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'resources',
+          position: 'left',
+          label: 'Resources & Pricing',
         },
         {
           href: 'https://github.com/facebook/docusaurus',
@@ -75,13 +81,25 @@ const config: Config = {
           items: [
             {
               label: 'User Guide',
-              to: '/dms_documentation/docs/intro',
+              to: '/dms_documentation/docs/user-guide/intro',
+            },
+            {
+              label: 'Training Sessions',
+              to: '/dms_documentation/docs/resources-and-pricing/training-sessions',
+            },
+            {
+              label: 'Pricing',
+              to: '/dms_documentation/docs/resources-and-pricing/pricing',
             },
           ],
         },
         {
           title: 'More',
           items: [
+            {
+              label: 'Contact Us',
+              to: '/dms_documentation/docs/resources-and-pricing/need-help',
+            },
             {
               label: 'GitHub',
               href: 'https://github.com/parceltracer/dms_documentation',

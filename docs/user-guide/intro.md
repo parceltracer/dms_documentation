@@ -25,7 +25,7 @@ Let's discover parcel tracer in less than 5 minutes!
 
 If you are the admin of a delivery organisation, here is how parcel tracer's main dashboard will look like to you. 
 
-![alt text](desktop-view.png)
+![alt text](./media/desktop-view.png)
 It includes several widgets that give you a bird's eye view of the delivery state at your company including:
 - Number of orders in each delivery state
 - Number of orders in each payment state
@@ -37,7 +37,7 @@ It includes several widgets that give you a bird's eye view of the delivery stat
 
 You can scan barcodes and lookup orders easily!
 
-![alt text](mobile-view.png)
+![alt text](./media/mobile-view.png)
 
 ## Next Steps
 

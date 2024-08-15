@@ -28,14 +28,38 @@ function HomepageHeader() {
         />
 
 
+        <div style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "2rem"
+        }}>
+          <div className={styles.buttons}>
+            <Link
+              className="button button--secondary button--lg"
+              to="/docs/user-guide/intro">
+              Getting Started
+            </Link>
+          </div>
 
+          <div className={styles.buttons}>
+            <Link
+              className="button button--secondary button--lg"
+              to="/docs/user-guide/intro">
+              Training Sessions
+            </Link>
+          </div>
+
+        </div>
+
+        <br />
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/intro">
-            Get Started
+            to="/docs/user-guide/intro">
+            Pricing
           </Link>
         </div>
+
       </div>
     </header>
   );
