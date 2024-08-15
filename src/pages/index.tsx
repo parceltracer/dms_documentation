@@ -7,6 +7,7 @@ import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
 import { Box, Button, Grid } from '@mui/material';
+import { isMobile } from 'react-device-detect';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -28,27 +29,28 @@ function HomepageHeader() {
         />
 
 
-        <Grid container spacing={2} justifyContent="center">
+        {isMobile && <Grid container spacing={2} justifyContent="center">
           <Grid item xs={12} sm={6} md={6} className={styles.buttons}>
             <Link
               className="button button--secondary button--lg"
               to="/docs/user-guide/intro"
               style={{ width: '100%', textAlign: 'center' }} // Optional: Ensures full width and centered text
             >
-              Get Started
+              User Guide
             </Link>
           </Grid>
 
           <Grid item xs={12} sm={6} md={6} className={styles.buttons}>
             <Link
               className="button button--secondary button--lg"
-              to="/docs/resources-and-pricing/pricing"
+              to="/docs/category/resources"
               style={{ width: '100%', textAlign: 'center' }} // Optional: Ensures full width and centered text
             >
               Resources & Pricing
             </Link>
           </Grid>
-        </Grid>
+        </Grid>}
+
 
       </div>
     </header>

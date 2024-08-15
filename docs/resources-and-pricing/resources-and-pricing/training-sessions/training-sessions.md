@@ -1,5 +1,6 @@
 ---
 sidebar_position: 3
+slug: /resources/training
 ---
 
 # Training Sessions

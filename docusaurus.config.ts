@@ -85,11 +85,11 @@ const config: Config = {
             },
             {
               label: 'Training Sessions',
-              to: '/docs/resources-and-pricing/training-sessions',
+              to: '/docs/resources/training',
             },
             {
               label: 'Pricing',
-              to: '/docs/resources-and-pricing/pricing',
+              to: '/docs/resources/pricing',
             },
           ],
         },
@@ -98,7 +98,7 @@ const config: Config = {
           items: [
             {
               label: 'Contact Us',
-              to: '/docs/resources-and-pricing/need-help',
+              to: '/docs/resources/help',
             },
             {
               label: 'GitHub',
