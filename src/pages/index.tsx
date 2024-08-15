@@ -31,7 +31,7 @@ function HomepageHeader() {
         <div style={{
           display: "flex",
           justifyContent: "center",
-          gap: "2rem"
+          gap: "1rem"
         }}>
           <div className={styles.buttons}>
             <Link
