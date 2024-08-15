@@ -8,15 +8,15 @@ const config: Config = {
   favicon: 'img/main-logo-icon-only.png',
 
   // Set the production url of your site here
-  url: 'https://parceltracer.github.io',
+  url: 'https://docs.parceltracer.app',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/dms_documentation/',
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'parceltracer', // Usually your GitHub org/user name.
-  projectName: 'dms_documentation', // Usually your repo name.
+  // organizationName: 'parceltracer', // Usually your GitHub org/user name.
+  // projectName: 'dms_documentation', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -81,15 +81,15 @@ const config: Config = {
           items: [
             {
               label: 'User Guide',
-              to: '/dms_documentation/docs/user-guide/intro',
+              to: '/docs/user-guide/intro',
             },
             {
               label: 'Training Sessions',
-              to: '/dms_documentation/docs/resources-and-pricing/training-sessions',
+              to: '/docs/resources-and-pricing/training-sessions',
             },
             {
               label: 'Pricing',
-              to: '/dms_documentation/docs/resources-and-pricing/pricing',
+              to: '/docs/resources-and-pricing/pricing',
             },
           ],
         },
@@ -98,7 +98,7 @@ const config: Config = {
           items: [
             {
               label: 'Contact Us',
-              to: '/dms_documentation/docs/resources-and-pricing/need-help',
+              to: '/docs/resources-and-pricing/need-help',
             },
             {
               label: 'GitHub',
