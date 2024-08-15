@@ -6,7 +6,7 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import Heading from '@theme/Heading';
 
 import styles from './index.module.css';
-import { Box } from '@mui/material';
+import { Box, Button, Grid } from '@mui/material';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -28,37 +28,37 @@ function HomepageHeader() {
         />
 
 
-        <div style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "1rem"
-        }}>
-          <div className={styles.buttons}>
+        <Grid container spacing={2} justifyContent="center">
+          <Grid item xs={12} sm={6} md={4} className={styles.buttons}>
             <Link
               className="button button--secondary button--lg"
-              to="/docs/user-guide/intro">
+              to="/docs/user-guide/intro"
+              style={{ width: '100%', textAlign: 'center' }} // Optional: Ensures full width and centered text
+            >
               Getting Started
             </Link>
-          </div>
+          </Grid>
 
-          <div className={styles.buttons}>
+          <Grid item xs={12} sm={6} md={4} className={styles.buttons}>
             <Link
               className="button button--secondary button--lg"
-              to="/docs/user-guide/intro">
+              to="/docs/resources-and-pricing/training-sessions"
+              style={{ width: '100%', textAlign: 'center' }} // Optional: Ensures full width and centered text
+            >
               Training Sessions
             </Link>
-          </div>
+          </Grid>
 
-        </div>
-
-        <br />
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/resources-and-pricing/pricing">
-            Pricing
-          </Link>
-        </div>
+          <Grid item xs={12} sm={12} md={4} className={styles.buttons}>
+            <Link
+              className="button button--secondary button--lg"
+              to="/docs/resources-and-pricing/pricing"
+              style={{ width: '100%', textAlign: 'center' }} // Optional: Ensures full width and centered text
+            >
+              Pricing
+            </Link>
+          </Grid>
+        </Grid>
 
       </div>
     </header>
