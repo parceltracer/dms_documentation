@@ -81,7 +81,7 @@ const config: Config = {
           items: [
             {
               label: 'User Guide',
-              to: '/docs/user-guide/intro',
+              to: '/docs/category/user-guide',
             },
             {
               label: 'Training Sessions',

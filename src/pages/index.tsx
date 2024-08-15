@@ -33,7 +33,7 @@ function HomepageHeader() {
           <Grid item xs={12} sm={6} md={6} className={styles.buttons}>
             <Link
               className="button button--secondary button--lg"
-              to="/docs/user-guide/intro"
+              to="/docs/category/user-guide"
               style={{ width: '100%', textAlign: 'center' }} // Optional: Ensures full width and centered text
             >
               User Guide
@@ -43,7 +43,7 @@ function HomepageHeader() {
           <Grid item xs={12} sm={6} md={6} className={styles.buttons}>
             <Link
               className="button button--secondary button--lg"
-              to="/docs/category/resources"
+              to="/docs/category/resources--pricing"
               style={{ width: '100%', textAlign: 'center' }} // Optional: Ensures full width and centered text
             >
               Resources & Pricing
