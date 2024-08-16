@@ -79,13 +79,13 @@ The last page considers only cancelled orders, and shows the same information as
 
 This section shows the number of orders in each delivery state.
 
-For a deeper explanation about the different delivery states, refer to [this](https://parceltracer.github.io//docs/user-guide/for-delivery-organisations/orders/intro-to-orders#delivery-states) section.
+For a deeper explanation about the different delivery states, refer to [this](https://docs.parceltracer.app/docs/user-guide/user-guide/for-delivery-organisations/orders/intro-to-orders#delivery-states) section.
 
 ## Payment States
 
 This section shows the number of orders in each payment state.
 
-For a deeper explanation about the different payment states, refer to [this](https://parceltracer.github.io//docs/user-guide/for-delivery-organisations/orders/intro-to-orders#payment-states) section.
+For a deeper explanation about the different payment states, refer to [this](https://docs.parceltracer.app/docs/user-guide/user-guide/for-delivery-organisations/orders/intro-to-orders#payment-states) section.
 
 ## Delivered Orders History
 

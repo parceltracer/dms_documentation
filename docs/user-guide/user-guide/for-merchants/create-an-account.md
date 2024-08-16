@@ -12,7 +12,7 @@ A delivery company is referred to in parcel tracer as an **Organisation**.
 
 As a merchant, to create an account, you should reach out to the delivery organisation admin and ask them to create a merchant account for you.
 
-If they are not sure how to do so, you can help out by sharing [this link](https://parceltracer.github.io/docs/user-guide/for-delivery-organisations/merchants/creating-merchants#create-merchant-from-merchants-page) that explains how this can be done.
+If they are not sure how to do so, you can help out by sharing [this link](https://docs.parceltracer.app/docs/user-guide/user-guide/for-delivery-organisations/merchants/creating-merchants#create-merchant-from-merchants-page) that explains how this can be done.
 
 ## Logging in to your account
 

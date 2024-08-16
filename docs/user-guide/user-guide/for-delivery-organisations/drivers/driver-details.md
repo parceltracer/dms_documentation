@@ -19,7 +19,7 @@ Here is an example of the orders view:
 
 ![alt text](./media/driver-orders-view.png)
 
-You can learn more about interacting with orders tables [here](https://parceltracer.github.io/docs/user-guide/for-delivery-organisations/orders/listing-orders).
+You can learn more about interacting with orders tables [here](https://docs.parceltracer.app/docs/user-guide/user-guide/for-delivery-organisations/orders/listing-orders).
 
 ## Account View
 

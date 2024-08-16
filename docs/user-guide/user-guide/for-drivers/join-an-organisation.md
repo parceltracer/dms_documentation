@@ -22,7 +22,7 @@ To join a delivery organisation, ask the delivery organisation admin to add you 
 
 All you need is to provide your phone number to the admin.
 
-You can help the admin by sharing [this link](https://parceltracer.github.io/docs/user-guide/for-delivery-organisations/drivers/creating-drivers#adding-a-registered-driver) which explains how you can be added to the delivery organisation.
+You can help the admin by sharing [this link](https://docs.parceltracer.app/docs/user-guide/user-guide/for-delivery-organisations/drivers/creating-drivers#adding-a-registered-driver) which explains how you can be added to the delivery organisation.
 
 Once your account is added to a delivery organisation, the warning message should disappear and you should see something similar to the following view:
 
