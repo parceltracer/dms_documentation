@@ -1,0 +1,1300 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Delivery Tracking API",
+    "description": "API for delivery companies to track drivers, orders, and customer information",
+    "version": "1.0.0",
+    "contact": {
+      "name": "API Support",
+      "email": "info@parceltracer.app"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://prod.parceltracer.app/api/v1/external",
+      "description": "Production server"
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "paths": {
+    "/orders": {
+      "get": {
+        "summary": "List orders",
+        "description": "Retrieve a list of orders with optional filtering",
+        "tags": ["Orders"],
+        "parameters": [
+          {
+            "name": "workflow",
+            "in": "query",
+            "description": "Filter by workflow type",
+            "schema": {
+              "type": "string",
+              "enum": ["STANDARD", "RETURN"]
+            }
+          },
+          {
+            "name": "delivery_state",
+            "in": "query",
+            "description": "Filter by delivery state",
+            "schema": {
+              "$ref": "#/components/schemas/DeliveryState"
+            }
+          },
+          {
+            "name": "customer",
+            "in": "query",
+            "description": "Filter by customer ID",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of orders to return",
+            "schema": {
+              "type": "integer",
+              "default": 50,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Number of orders to skip",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of orders",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Order"
+                      }
+                    },
+                    "total": {
+                      "type": "integer",
+                      "description": "Total number of orders"
+                    },
+                    "limit": {
+                      "type": "integer"
+                    },
+                    "offset": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new order",
+        "description": "Create a new order in the system",
+        "tags": ["Orders"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Order created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
+    "/orders/{id}": {
+      "get": {
+        "summary": "Get order by ID",
+        "description": "Retrieve a specific order by its ID",
+        "tags": ["Orders"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Order ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update order",
+        "description": "Update an existing order",
+        "tags": ["Orders"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Order ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Order updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Cancel order",
+        "description": "Cancel an existing order",
+        "tags": ["Orders"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Order ID",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Order cancelled successfully"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
+    "/customers": {
+      "get": {
+        "summary": "List customers",
+        "description": "Retrieve a list of customers",
+        "tags": ["Customers"],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Filter by customer name (partial match)",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "phone_number",
+            "in": "query",
+            "description": "Filter by phone number",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of customers to return",
+            "schema": {
+              "type": "integer",
+              "default": 50,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Number of customers to skip",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of customers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Customer"
+                      }
+                    },
+                    "total": {
+                      "type": "integer"
+                    },
+                    "limit": {
+                      "type": "integer"
+                    },
+                    "offset": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new customer",
+        "description": "Create a new customer in the system",
+        "tags": ["Customers"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Customer created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
+    "/customers/{id}": {
+      "get": {
+        "summary": "Get customer by ID",
+        "description": "Retrieve a specific customer by their ID",
+        "tags": ["Customers"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Customer ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Customer details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update customer",
+        "description": "Update an existing customer",
+        "tags": ["Customers"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Customer ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Customer updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Customer"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete customer",
+        "description": "Delete an existing customer",
+        "tags": ["Customers"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Customer ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Customer deleted successfully"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
+    "/customer-locations": {
+      "get": {
+        "summary": "List customer locations",
+        "description": "Retrieve a list of customer locations",
+        "tags": ["Customer Locations"],
+        "parameters": [
+          {
+            "name": "customer",
+            "in": "query",
+            "description": "Filter by customer ID",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "district",
+            "in": "query",
+            "description": "Filter by district",
+            "schema": {
+              "$ref": "#/components/schemas/District"
+            }
+          },
+          {
+            "name": "governorate",
+            "in": "query",
+            "description": "Filter by governorate",
+            "schema": {
+              "$ref": "#/components/schemas/Governorate"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Maximum number of locations to return",
+            "schema": {
+              "type": "integer",
+              "default": 50,
+              "maximum": 100
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "Number of locations to skip",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of customer locations",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/CustomerLocation"
+                      }
+                    },
+                    "total": {
+                      "type": "integer"
+                    },
+                    "limit": {
+                      "type": "integer"
+                    },
+                    "offset": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new customer location",
+        "description": "Create a new customer location in the system",
+        "tags": ["Customer Locations"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerLocationCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Customer location created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerLocation"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    },
+    "/customer-locations/{id}": {
+      "get": {
+        "summary": "Get customer location by ID",
+        "description": "Retrieve a specific customer location by its ID",
+        "tags": ["Customer Locations"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Customer location ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Customer location details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerLocation"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update customer location",
+        "description": "Update an existing customer location",
+        "tags": ["Customer Locations"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Customer location ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CustomerLocationUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Customer location updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CustomerLocation"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete customer location",
+        "description": "Delete an existing customer location",
+        "tags": ["Customer Locations"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Customer location ID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Customer location deleted successfully"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          },
+          "401": {
+            "$ref": "#/components/responses/Unauthorized"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key"
+      }
+    },
+    "schemas": {
+      "Order": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Auto-generated unique identifier of the order"
+          },
+          "reference_id": {
+            "type": "string",
+            "nullable": true,
+            "description": "Reference number provided by the merchant"
+          },
+          "is_exchange": {
+            "type": "boolean",
+            "default": false,
+            "description": "If true, requires picking up return package upon delivery"
+          },
+          "workflow": {
+            "type": "string",
+            "enum": ["STANDARD", "RETURN"],
+            "description": "STANDARD: order delivered from merchant to customer, RETURN: order returned from customer to merchant"
+          },
+          "tracking_hash": {
+            "type": "string",
+            "readOnly": true,
+            "description": "Globally unique identifier used to track order publicly"
+          },
+          "is_critical": {
+            "type": "boolean",
+            "default": false,
+            "description": "If true, enforces rapid delivery operation"
+          },
+          "customer": {
+            "type": "integer",
+            "description": "Customer's identifier"
+          },
+          "customer_location": {
+            "type": "integer",
+            "description": "Customer location identifier used for order delivery or pickup for return"
+          },
+          "merchant_location": {
+            "type": "integer",
+            "description": "Identifier of the shop's location used for order pickup or order return"
+          },
+          "cod": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "description": "Total amount to be collected upon delivery. Array of [currency, amount] pairs",
+            "example": [["USD", "123.5"], ["LBP", "2000000"]]
+          },
+          "number_of_packages": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Number of packages in the order"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true,
+            "description": "Description of the order content"
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true,
+            "description": "Extra notes shared with all parties"
+          },
+          "return_reason": {
+            "type": "string",
+            "nullable": true,
+            "description": "Reason for return, relevant for orders with RETURN workflow"
+          },
+          "delivery_state": {
+            "$ref": "#/components/schemas/DeliveryState"
+          },
+          "payment_state": {
+            "$ref": "#/components/schemas/PaymentState"
+          },
+          "merchant_invoice": {
+            "type": "integer",
+            "readOnly": true,
+            "nullable": true,
+            "description": "Identifier of the payment invoice"
+          }
+        },
+        "required": ["workflow", "customer", "customer_location", "merchant_location", "number_of_packages"]
+      },
+      "OrderCreate": {
+        "type": "object",
+        "properties": {
+          "reference_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "is_exchange": {
+            "type": "boolean",
+            "default": false
+          },
+          "workflow": {
+            "type": "string",
+            "enum": ["STANDARD", "RETURN"]
+          },
+          "is_critical": {
+            "type": "boolean",
+            "default": false
+          },
+          "customer": {
+            "type": "integer"
+          },
+          "customer_location": {
+            "type": "integer"
+          },
+          "merchant_location": {
+            "type": "integer"
+          },
+          "cod": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "default": []
+          },
+          "number_of_packages": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true
+          },
+          "return_reason": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "required": ["workflow", "customer", "customer_location", "merchant_location", "number_of_packages"]
+      },
+      "OrderUpdate": {
+        "type": "object",
+        "properties": {
+          "reference_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "is_exchange": {
+            "type": "boolean"
+          },
+          "is_critical": {
+            "type": "boolean"
+          },
+          "cod": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            }
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "notes": {
+            "type": "string",
+            "nullable": true
+          },
+          "return_reason": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "DeliveryState": {
+        "type": "string",
+        "enum": [
+          "CREATED",
+          "PICKUP_REQUESTED",
+          "PICKUP_ASSIGNED",
+          "SCANNED_FOR_PICKUP",
+          "PICKED_UP",
+          "AT_WAREHOUSE",
+          "DELIVERY_ASSIGNED",
+          "SCANNED_FOR_DELIVERY",
+          "PICKED_UP_FOR_DELIVERY",
+          "IN_TRANSIT",
+          "DELIVERED",
+          "AWAITING_RETURN",
+          "CANCELLED",
+          "DELIVERED_AT_WAREHOUSE"
+        ],
+        "readOnly": true,
+        "description": "Current delivery state of the order"
+      },
+      "PaymentState": {
+        "type": "string",
+        "enum": [
+          "UNPAID",
+          "PENDING_PAYMENT_BY_DRIVER",
+          "PAID_BY_DRIVER",
+          "PENDING_PAYMENT_TO_MERCHANT",
+          "PAID_TO_MERCHANT"
+        ],
+        "readOnly": true,
+        "description": "Current payment state of the order"
+      },
+      "Customer": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true,
+            "description": "Unique customer identifier"
+          },
+          "name": {
+            "type": "string",
+            "description": "Full customer name"
+          },
+          "phone_number": {
+            "type": "string",
+            "description": "Customer's primary phone number including country code"
+          },
+          "secondary_phone_number": {
+            "type": "string",
+            "nullable": true,
+            "description": "Customer's alternative phone number including country code"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "nullable": true,
+            "description": "Customer's email address"
+          }
+        },
+        "required": ["name", "phone_number"]
+      },
+      "CustomerCreate": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "phone_number": {
+            "type": "string"
+          },
+          "secondary_phone_number": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "nullable": true
+          }
+        },
+        "required": ["name", "phone_number"]
+      },
+      "CustomerUpdate": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "phone_number": {
+            "type": "string"
+          },
+          "secondary_phone_number": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "nullable": true
+          }
+        }
+      },
+      "CustomerLocation": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "readOnly": true,
+            "description": "Unique location identifier"
+          },
+          "customer": {
+            "type": "integer",
+            "description": "Related customer identifier"
+          },
+          "address": {
+            "type": "string",
+            "description": "Customer location address"
+          },
+          "city": {
+            "type": "string",
+            "description": "Customer location's city"
+          },
+          "directions": {
+            "type": "string",
+            "nullable": true,
+            "description": "Additional useful directions to arrive at the customer's location"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true,
+            "description": "Google Maps URL"
+          },
+          "place_id": {
+            "type": "string",
+            "nullable": true,
+            "description": "Place ID as extracted by Google Maps"
+          },
+          "district": {
+            "$ref": "#/components/schemas/District"
+          },
+          "governorate": {
+            "$ref": "#/components/schemas/Governorate"
+          }
+        },
+        "required": ["customer", "address", "city"]
+      },
+      "CustomerLocationCreate": {
+        "type": "object",
+        "properties": {
+          "customer": {
+            "type": "integer"
+          },
+          "address": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "directions": {
+            "type": "string",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "place_id": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "required": ["customer", "address", "city"]
+      },
+      "CustomerLocationUpdate": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "directions": {
+            "type": "string",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "place_id": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "District": {
+        "type": "string",
+        "enum": [
+          "Zahleh",
+          "Hasbaya",
+          "Baalbek",
+          "Jezzine",
+          "Baabda",
+          "Jbeil",
+          "Zgharta",
+          "Bint Jbeil",
+          "Hermel",
+          "Marjeyoun",
+          "Bsharri",
+          "Aley",
+          "Rashaya",
+          "Miniyeh-Danniyeh",
+          "Tripoli",
+          "Tyre",
+          "Nabatieh",
+          "Chouf",
+          "Maatn",
+          "Western Beqaa",
+          "Akkar",
+          "Sidon",
+          "Batroun",
+          "Keserwan",
+          "Koura",
+          "Beirut"
+        ],
+        "readOnly": true,
+        "description": "Location's district"
+      },
+      "Governorate": {
+        "type": "string",
+        "enum": [
+          "Beqaa",
+          "Nabatieh",
+          "South",
+          "Mount Lebanon",
+          "North",
+          "Beirut"
+        ],
+        "readOnly": true,
+        "description": "Location's governorate"
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "code": {
+            "type": "string",
+            "description": "Error code"
+          },
+          "details": {
+            "type": "object",
+            "nullable": true,
+            "description": "Additional error details"
+          }
+        },
+        "required": ["error", "code"]
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "Bad request - invalid parameters or missing required fields",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "error": "Invalid request parameters",
+              "code": "INVALID_PARAMETERS",
+              "details": {
+                "field": "customer",
+                "message": "Customer ID is required"
+              }
+            }
+          }
+        }
+      },
+      "Unauthorized": {
+        "description": "Unauthorized - invalid or missing API key",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "error": "Invalid API key",
+              "code": "UNAUTHORIZED"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "Resource not found",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "error": "Resource not found",
+              "code": "NOT_FOUND"
+            }
+          }
+        }
+      },
+      "InternalServerError": {
+        "description": "Internal server error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "error": "An unexpected error occurred",
+              "code": "INTERNAL_ERROR"
+            }
+          }
+        }
+      }
+    },
+    "examples": {
+      "StandardOrder": {
+        "summary": "Standard delivery order",
+        "value": {
+          "workflow": "STANDARD",
+          "customer": 123,
+          "customer_location": 456,
+          "merchant_location": 789,
+          "number_of_packages": 2,
+          "cod": [["USD", "50.00"]],
+          "description": "Electronics order - 2 smartphones",
+          "notes": "Handle with care - fragile items"
+        }
+      },
+      "ReturnOrder": {
+        "summary": "Return order",
+        "value": {
+          "workflow": "RETURN",
+          "customer": 123,
+          "customer_location": 456,
+          "merchant_location": 789,
+          "number_of_packages": 1,
+          "is_exchange": true,
+          "return_reason": "Defective product",
+          "notes": "Customer will exchange for different size"
+        }
+      },
+      "Customer": {
+        "summary": "Customer example",
+        "value": {
+          "name": "John Doe",
+          "phone_number": "+96170123456",
+          "secondary_phone_number": "+96171234567",
+          "email": "john.doe@example.com"
+        }
+      },
+      "CustomerLocation": {
+        "summary": "Customer location example",
+        "value": {
+          "customer": 123,
+          "address": "123 Main Street, Building A, Floor 3",
+          "city": "Beirut",
+          "directions": "Next to the pharmacy, blue building",
+          "url": "https://maps.google.com/place/example",
+          "place_id": "ChIJN1t_tDeuEmsRUsoyG83frY4"
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Orders",
+      "description": "Operations related to order management and tracking"
+    },
+    {
+      "name": "Customers",
+      "description": "Operations related to customer management"
+    },
+    {
+      "name": "Customer Locations",
+      "description": "Operations related to customer location management"
+    }
+  ]
+}

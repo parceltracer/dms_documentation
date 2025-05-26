@@ -1,0 +1,62 @@
+---
+title: 'Quickstart'
+---
+
+The Parcel Tracer API helps delivery companies track orders, drivers, and businesses through our powerful REST API.
+
+<CardGroup cols={2}>
+  <Card
+    title="Data Models"
+    icon="database"
+    href="/models"
+  >
+    Understand the schema for Customers, Orders, and Locations.
+  </Card>
+  <Card
+    title="API Reference"
+    icon="code"
+    href="/api-reference"
+  >
+    Explore all available endpoints and their parameters
+  </Card>
+</CardGroup>
+
+### Authentication
+
+Every API request requires an API key for authentication. Always include your API key in the request header:
+
+<CodeGroup>
+
+```bash cURL
+curl --request GET \
+  --url https://api.parceltracer.app/v1/external/{endpoint} \
+  --header 'X-Api-Key: <api-key>'
+```
+
+```python Python
+import requests
+
+url = "https://api.parceltracer.app/v1/external/{endpoint}"
+headers = {
+    "X-Api-Key": "<api-key>"
+}
+
+response = requests.get(url, headers=headers)
+```
+
+```javascript JavaScript
+const response = await fetch('https://api.parceltracer.app/v1/external/{endpoint}', {
+  method: 'GET',
+  headers: {
+    'X-Api-Key': '<api-key>'
+  }
+});
+```
+
+</CodeGroup>
+
+### Getting Your API Key
+
+**Production:** Generate your API key directly in the ParcelTracer dashboard under Settings → API Keys.
+
+**Testing:** Need to test our endpoints from the documentation directly? [Contact us](mailto:info@parceltracer.app) to get a sandbox API key for exploring the documentation.

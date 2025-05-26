@@ -1,0 +1,80 @@
+---
+id: intro-to-orders
+title: Introduction
+---
+
+## What is an Order
+
+An order represents one or more packages that are shipped from a merchant (i.e. sender) to a customer (i.e. recepient).
+
+Each order has a unique id called `Order Id`.\
+In other words, it is not possible for multiple orders to share the same order id.
+
+## Order Properties
+
+The table below describes the properties that describe an order in the system.
+
+| Property          | Description                                                                                                                                                            |
+|-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| order id          | A unique ID that identifies the order.                                                                                                                                 |
+| reference number  | An id that can be relevant to the sender.  It is not unique.                                                                                                           |
+| Merchant          | The sender of the order.                                                                                                                                               |
+| Customer          | The recepient of the order.                                                                                                                                            |
+| Driver            | The delivery driver that delivers the order.                                                                                                                           |
+| Branch            | The delivery company that the order is attached to.                                                                                                                    |
+| Address           | Complete destination address. Usually, it is the same as the customer's address.                                                                                       |
+| District          | Destination's district (e.g. Jezzine). Usually, it is the same as the customer's district.                                                                             |
+| Delivery State    | The delivery state of the order (PENDING \| APPROVED \| IN TRANSIT \| DELIVERED \| CANCELLED)                                                                          |
+| Payment State     | The payment state of the order (UNINOIVED \| INVOICED FOR DRIVER \| INVOICED FOR MERCHANT)                                                                             |
+| Price             | The amount of money that the merchant should get from the customer for this order.                                                                                     |
+| Delivery Fee      | The amount of money that the delivery company should get from the customer delivering this order.                                                                      |
+| Driver Commission | The amount of money that the delivery company should pay to the delivery driver for delivering this order.                                                             |
+| Description       | A description that is visible to delivery company employees, to the customer and to the merchant. Usually it contains a description of what is contained in the order. |
+| Public Note       | A note that is visible to the delivery company and to the merchant, but not to the customer.                                                                           |
+| Private Note      | A note that is visible to the delivery company only.                                                                                                                   |
+
+## Delivery States
+
+There are 5 possible delivery states:
+- **Pending**: not yet approved by the delivery company. 
+  - Orders created by merchants are created in the Pending state
+  - Orders created by the delivery company is created in the approved state. 
+  - A pending order can't be sent out for delivery, it should be first approved.
+- **Approved**: packaged and ready for delivery by the driver.
+- **In Transit**: on its way to the recepient.
+- **Delivered**: delivered to the recepient.
+- **Cancelled**: cancelled due to some reason (return, refund, lost, etc.)
+
+## Payment States
+
+There are 3 possible payment states:
+- **Uninvoiced**: no payments are done so far.
+- **Invoiced for driver**: the driver has paid the money to the delivery company.
+- **Invoiced for merchant**: the delivery company has paid the money to the merchant.
+
+## Order States
+
+<Warning>
+
+### **Pay Attention**
+It is not possible to have inconsistent states in the system.\
+For example, an order can't be `Pending` and `Invoiced For Driver` at the same time.\
+If you try to do such modification to the order, the system will refuse to save the order.
+
+</Warning>
+
+
+The following table shows the accepted order states:
+
+| Delivery State | Payment State |
+|----------------|---------------|
+| Pending Approval        | Uninvoiced    |
+| Approved       | Uninvoiced    |
+| In Transit     | Uninvoiced    |
+| Delivered      | Any State     |
+| Cancelled      | Any State     |
+
+
+
+
+

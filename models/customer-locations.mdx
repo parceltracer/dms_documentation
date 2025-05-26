@@ -1,0 +1,35 @@
+---
+title: Customer Locations
+description: The Customer location entity represents a precise address of a customer.
+---
+
+A customer can have several locations. Each location is identified by many details that helps carriers deliver the order without any delays.
+
+## Fields
+
+### `id`: `number`
+**Attributes:** Unique  
+A unique identifier assigned to each location.
+
+### `address`: `string`
+
+Full customer address.
+
+### `district`: `enum`
+
+Region of the customer's location (currently refers to Lebanese districts strictly).
+
+Possible values: `Zahleh`, `Hasbaya`, `Baalbek`, `Jezzine`, `Baabda`, `Jbeil`, `Zgharta`, `Bint Jbeil`, `Hermel`, `Marjeyoun`, `Bsharri`, `Aley`, `Rashaya`, `Miniyeh-Danniyeh`, `Tripoli`, `Tyre`, `Nabatieh`, `Chouf`, `Maatn`, `Western Beqaa`, `Akkar`, `Sidon`, `Batroun`, `Keserwan`, `Koura`, `Beirut`
+
+
+### `governorate`: `enum`
+Determined automatically based on the chosen `district`.
+
+Possible values: `Beqaa`, `Nabatieh`, `South`, `Mount Lebanon`, `North`, `Beirut`  
+
+
+### `city`: `string`
+The customer's location city within the selected districted (currently refers to lebanese cities strictly.)
+
+### `directions`: `string`
+Extra indications to help the driver find the location more easily.

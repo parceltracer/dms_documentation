@@ -1,0 +1,52 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Parcel Tracer",
+  "colors": {
+    "primary": "#9B5DE5",
+    "light": "#7038B2",
+    "dark": "#7038B2"
+  },
+  "favicon": "/favicon.png",
+  "navigation": {
+    "groups": [
+      {
+        "group": "User Guide",
+        "pages": [
+          "quickstart"
+        ]
+      },
+      {
+        "group": "Models",
+        "pages": [
+          "models/customers",
+          "models/customer-locations",
+          "models/orders"
+        ]
+      },
+      {
+        "group": "API Reference",
+        "openapi": {
+          "source": "/api-reference/schema.yaml"
+        }
+      }
+    ]
+  },
+  "logo": {
+    "light": "/logo/main-logo.png",
+    "dark": "/logo/main-logo.png"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Contact Us",
+        "href": "mailto:info@parceltracer.app"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Open App",
+      "href": "https://prod.parceltracer.app"
+    }
+  }
+}

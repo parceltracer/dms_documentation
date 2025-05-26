@@ -1,0 +1,38 @@
+---
+title: Customer
+description: Customers are at the heart of the delivery process. They receive orders from or return orders back to shops.
+---
+
+## Fields
+
+### `id`: `number`
+**Attributes:** Unique  
+A unique identifier assigned to each customer.
+
+### `name`: `string`
+
+The full name of the customer.
+
+### `phone_number`: `string`
+**Attributes:** Unique
+  
+The customer's primary phone number, including the country code.
+
+### `secondary_phone_number`: `string`
+
+An alternative phone number for the customer, also including the country code.
+
+### `email`: `string`
+
+The customer's email address.
+
+## Example
+
+```json
+{
+  "id": 12345,
+  "name": "Jane Doe",
+  "phone_number": "+15551234567",
+  "secondary_phone_number": "+15557654321",
+  "email": "jane.doe@example.com"
+}

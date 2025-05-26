@@ -1,0 +1,133 @@
+---
+title: Order
+description: The Order entity represents a delivery transaction between a merchant and a customer, including both standard deliveries and return workflows.
+---
+
+## Fields
+
+### `order_id`: `string`
+- **Attributes:** Unique  
+  A unique, auto-generated identifier assigned by Parcel Tracer.
+
+### `reference_id`: `string`
+
+  A reference number provided by the merchant.
+
+### `workflow`: `enum`
+
+  Defines the order flow direction. Values:
+  - `STANDARD`: Order delivered from merchant to customer
+  - `RETURN`: Order returned from customer to merchant
+
+
+### `is_exchange`: `boolean`
+
+  If set to true, requires picking up return package upon delivery.
+
+  This option is only valid for orders having a `STANDARD` workflow.
+
+### `tracking_link`: `string`
+
+  A publicly accessible link that can be used to track the delivery journey of the order.
+
+### `is_critical`: `boolean`
+
+  If set to true, enforces rapid delivery operation (subject to delivery company load and availability).
+
+### `customer`: `object`
+
+  The customer receiving or returning the order.
+
+### `customer_location`: `object`
+
+  The location of the corresponding customer.
+
+  This location serves as a destination location in case of `STANDARD` orders and as a pickup location in case of `RETURN` orders.
+
+### `merchant_location`: `integer`
+
+  Identifier of the shop's location used for order pickup or order return.
+
+### `cod`: `array`
+
+  Total amount to be collected upon delivery (or upon return). 
+  
+  Array of currency-amount pairs.
+
+  Supported currencies:
+  - `USD`
+  - `EUR`
+  - `LBP`
+
+  **Examples:**
+  ```json
+  [["USD", "123.5"], ["LBP", "2000000"]]  // $123.5 + 2,000,000 L.L
+  []  // No COD amount
+  ```
+  
+  <Note>For RETURN orders, this amount represents what the merchant will pay on the order return operation. Please consult the delivery company to be informed about dealing with such situations.</Note>
+
+### `delivery_fee`: `array`
+
+  Total delivery fees amount charged on the delivery operation. 
+
+  This amount is fixed for the merchant's account by the delivery company.
+
+  Irrelevant in case of RETURN orders.
+  
+  Array of currency-amount pairs.
+
+  Supported currencies:
+  - `USD`
+  - `EUR`
+  - `LBP`
+
+  <Note>For RETURN orders, this amount is irrelevant because it will already be counted in the return `COD` amount that the shop pays upon order return.</Note>
+
+
+### `number_of_packages`: `integer`
+
+  Number of packages in the order. Must be greater than or equal to 1.
+
+### `description`: `string`
+  Description of the order content.
+
+### `notes`: `string`
+  Extra notes shared with all parties, including the delivery company, carrier, and recipient.
+
+### `return_reason`: `string`
+
+  Reason for return, relevant for orders with RETURN workflow.
+
+### `delivery_state`: `enum<string>`
+  
+  Current state of the order in the delivery process. Values:
+  
+  - `CREATED`: Order is created but still at the origin
+  - `PICKUP_REQUESTED`: Order pickup is requested
+  - `PICKUP_ASSIGNED`: A carrier has been assigned to pickup the order
+  - `SCANNED_FOR_PICKUP`: The assigned carrier has scanned the order at the origin upon pickup
+  - `PICKED_UP`: Order has been picked up by the assigned carrier
+  - `AT_WAREHOUSE`: Order is at the delivery company's warehouse
+  - `DELIVERY_ASSIGNED`: A carrier has been assigned to deliver the order
+  - `SCANNED_FOR_DELIVERY`: The assigned carrier has scanned the order at the warehouse before collecting it to start the delivery process
+  - `PICKED_UP_FOR_DELIVERY`: The assigned carrier has picked up the order from the warehouse to start the delivery process
+  - `IN_TRANSIT`: The assigned carrier has started delivering the order
+  - `DELIVERED`: Order has been delivered to the destination (for RETURN workflow, signifies delivery back to the shop)
+  - `AWAITING_RETURN`: The delivery process has been interrupted and the order is on its way back to the warehouse
+  - `CANCELLED`: The order has been fully cancelled (no more operations are possible)
+  - `DELIVERED_AT_WAREHOUSE`: The order has been delivered to the customer directly at the warehouse without driver intervention
+
+  Terminal states: `CANCELLED`, `DELIVERED`, `DELIVERED_AT_WAREHOUSE`
+
+### `payment_state`: `enum<string>`
+  Current payment status for the order. Values:
+  
+  - `UNPAID`: Order amount has not been collected yet
+  - `PENDING_PAYMENT_BY_DRIVER`: The carrier collected the required amount and is yet to transfer it to the accounting department
+  - `PAID_BY_DRIVER`: The amount has been received by the accounting department
+  - `PENDING_PAYMENT_TO_MERCHANT`: The amount has been prepared for payment to the shop (excluding delivery fees)
+  - `PAID_TO_MERCHANT`: The amount has been fully paid to the shop (excluding delivery fees)
+
+### `merchant_invoice`: `integer`
+  Identifier of the payment invoice.
