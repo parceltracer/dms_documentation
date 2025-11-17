@@ -1499,5 +1499,5 @@ components:
       in: header
       name: X-Api-Key
 servers:
-- url: https://api.parceltracer.app/v1/external/
+- url: https://api.parceltracer.com/v1/external/
   description: Parcel Tracer api endpoint

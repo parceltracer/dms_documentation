@@ -29,14 +29,14 @@ Every API request requires an API key for authentication. Always include your AP
 
 ```bash cURL
 curl --request GET \
-  --url https://api.parceltracer.app/v1/external/{endpoint} \
+  --url https://api.parceltracer.com/v1/external/{endpoint} \
   --header 'X-Api-Key: <api-key>'
 ```
 
 ```python Python
 import requests
 
-url = "https://api.parceltracer.app/v1/external/{endpoint}"
+url = "https://api.parceltracer.com/v1/external/{endpoint}"
 headers = {
     "X-Api-Key": "<api-key>"
 }
@@ -45,7 +45,7 @@ response = requests.get(url, headers=headers)
 ```
 
 ```javascript JavaScript
-const response = await fetch('https://api.parceltracer.app/v1/external/{endpoint}', {
+const response = await fetch('https://api.parceltracer.com/v1/external/{endpoint}', {
   method: 'GET',
   headers: {
     'X-Api-Key': '<api-key>'
